@@ -1,0 +1,31 @@
+<div>
+  <div class="header">
+    <div>
+      Next page token: <%= @payload[:next_page_token] %>
+    </div>
+    <div>
+      <%= link_to "Next Page", "?next_page_token=#{@payload[:next_page_token]}" %>
+    </div>
+  </div>
+  <div class="main-content">
+    <% @payload[:messages].each_with_index do |message, index| %>
+      <div class="mail-detail">
+        <span>
+          <%= index + 1 %>:
+        </span>
+        <div>
+          <%= message[:from].name %>:
+          <%= message[:from].value %>
+        </div>
+        <div>
+          <%= message[:to].name %>:
+          <%= message[:to].value %>
+        </div>
+        <div>
+          <%= message[:subject].name %>:
+          <%= message[:subject].value %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
